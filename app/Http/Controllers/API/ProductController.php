@@ -99,6 +99,8 @@ class ProductController extends BaseController
         $validator = Validator::make($input, [
             'name' => 'required',
             'description' => 'required',
+            'type'=>'required|integer|between:1,3',
+
            // 'image' => 'required|image|max:2048',
 
         ]);
@@ -116,6 +118,7 @@ class ProductController extends BaseController
             
             $product->name = $request->get('name');
             $product->description = $request->get('description');
+            $product->type = $request->get('type');
             $product->image = $baseUrl.'/images/'.$imageName;
             
             $product->save();
@@ -123,6 +126,7 @@ class ProductController extends BaseController
 
             $product->name = $request->get('name');
             $product->description = $request->get('description');
+            $product->type = $request->get('type');
             $product->save();
 
         }
